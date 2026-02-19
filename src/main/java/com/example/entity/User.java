@@ -1,23 +1,22 @@
 package com.example.entity;
 
 import java.io.Serializable;
-import javax.persistence.*;
+import jakarta.persistence.*;
 import java.math.BigDecimal;
 import java.util.Date;
 import java.util.List;
-
 
 /**
  * The persistent class for the user database table.
  * 
  */
 @Entity
-@NamedQuery(name="User.findAll", query="SELECT u FROM User u")
+@NamedQuery(name = "User.findAll", query = "SELECT u FROM User u")
 public class User implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
-	@GeneratedValue(strategy=GenerationType.AUTO)
+	@GeneratedValue(strategy = GenerationType.AUTO)
 	private int userId;
 
 	@Temporal(TemporalType.TIMESTAMP)
@@ -42,10 +41,12 @@ public class User implements Serializable {
 
 	private String userName;
 
+	private String password;
+
 	private BigDecimal version;
 
-	//bi-directional many-to-one association to UserRole
-	@OneToMany(mappedBy="user")
+	// bi-directional many-to-one association to UserRole
+	@OneToMany(mappedBy = "user")
 	private List<UserRole> userRoles;
 
 	public User() {
@@ -137,6 +138,14 @@ public class User implements Serializable {
 
 	public void setUserName(String userName) {
 		this.userName = userName;
+	}
+
+	public String getPassword() {
+		return password;
+	}
+
+	public void setPassword(String password) {
+		this.password = password;
 	}
 
 	public BigDecimal getVersion() {

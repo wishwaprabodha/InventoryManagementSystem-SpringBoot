@@ -1,7 +1,7 @@
 package com.example.entity;
 
 import java.io.Serializable;
-import javax.persistence.*;
+import jakarta.persistence.*;
 import java.math.BigDecimal;
 import java.util.Date;
 

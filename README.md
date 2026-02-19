@@ -1,24 +1,33 @@
-# Inventory Management System (Spring Boot) 
+# Inventory Management System (Spring Boot)
 
-Implementation of Backend API's for Common Inventory Management Use Case.
+A modern inventory management system built with Spring Boot 3.4.2, Java 21, and Spring Security with JWT.
 
-## Installation
+## High-Level Setup
 
-1. Clone the Repository.
-2. Upload the database schema to your localhost database.
-3. Remove the classes created in the entity folder.
-4. Create a persistence mapping using Hibernate form database schema.
-5. Run the project.
+### 1. Prerequisites
+*   Docker and Docker Compose installed.
+*   Java 21 and Maven (if running locally).
 
+### 2. Running with Docker (Quickest)
+The project is fully dockerized with a multi-stage build.
 ```bash
-mvn spring-boot:run
+docker compose up --build
 ```
+*   **API URL**: `http://localhost:8081`
+*   **Database (MySQL)**: `localhost:3307` (Root: `root`, Password: `egxduvwz`)
 
+### 3. Running Locally
+1.  **Database**: Ensure a MySQL instance is running.
+2.  **Configure**: Update `src/main/resources/application.properties` or set environment variables (`DB_HOST`, `DB_USER`, etc.).
+3.  **Build & Run**:
+    ```bash
+    ./mvnw clean spring-boot:run
+    ```
 
+### 4. Authentication
+*   **Register**: `POST /auth/register` (Send User JSON)
+*   **Login**: `POST /auth/login` (Returns JWT token)
+*   **Secure API**: Add `Authorization: Bearer <token>` to your headers.
 
-## Contributing
-Pull requests are welcome. For major changes, please open an issue first to discuss what you would like to change.
-
-Please make sure to update tests as appropriate.
-
-## Thank You!
+---
+*Upgraded to Spring Boot 3 & Java 21 by Antigravity AI.*
