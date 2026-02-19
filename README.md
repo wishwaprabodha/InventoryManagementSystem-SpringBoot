@@ -8,13 +8,27 @@ A modern inventory management system built with Spring Boot 3.4.2, Java 21, and 
 *   Docker and Docker Compose installed.
 *   Java 21 and Maven (if running locally).
 
-### 2. Running with Docker (Quickest)
-The project is fully dockerized with a multi-stage build.
+### 2. Running with Docker (Recommended)
+This is the fastest way to get the system up and running with all dependencies (MySQL & App).
+
+**To start the application:**
 ```bash
-docker compose up --build
+docker compose up -d --build
 ```
+
+**Verify the application is running:**
+```bash
+docker logs -f inventory-app
+```
+
+**Access Points:**
 *   **API URL**: `http://localhost:8081`
-*   **Database (MySQL)**: `localhost:3307` (Root: `root`, Password: `egxduvwz`)
+*   **Database (MySQL)**: `localhost:3307` (Credentials: `root` / `egxduvwz`)
+
+**To stop the application:**
+```bash
+docker compose down
+```
 
 ### 3. Running Locally
 1.  **Database**: Ensure a MySQL instance is running.
