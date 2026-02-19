@@ -14,15 +14,13 @@ import java.util.Optional;
  */
 
 @RestController
-@RequestMapping("categories/{id}/products")
+@RequestMapping("categories/{categoryId}/products")
 public class ProductController {
-
 
     @Autowired
     public ProductService productService;
     @Autowired
     private ProductLogService productLogService;
-
 
     @RequestMapping("")
     public Iterable<Product> getAllProducts() {
@@ -40,17 +38,16 @@ public class ProductController {
         productLogService.insert(TheLogConverter.productLogConverter(product));
     }
 
-    @RequestMapping(method = RequestMethod.PUT,value ="/{id}")
+    @RequestMapping(method = RequestMethod.PUT, value = "/{id}")
     public void updateProduct(@RequestBody Product product) {
         productService.updateProduct(product);
         productLogService.insert(TheLogConverter.productLogConverter(product));
     }
 
-    @RequestMapping(method = RequestMethod.DELETE,value ="/{id}")
+    @RequestMapping(method = RequestMethod.DELETE, value = "/{id}")
     public void deleteProduct(@RequestBody Product product) {
         productService.deleteProduct(product);
         productLogService.insert(TheLogConverter.productLogConverter(product));
     }
-
 
 }

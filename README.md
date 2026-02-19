@@ -29,5 +29,4 @@ docker compose up --build
 *   **Login**: `POST /auth/login` (Returns JWT token)
 *   **Secure API**: Add `Authorization: Bearer <token>` to your headers.
 
----
-*Upgraded to Spring Boot 3 & Java 21 by Antigravity AI.*
+

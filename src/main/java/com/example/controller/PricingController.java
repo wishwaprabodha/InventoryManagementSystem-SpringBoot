@@ -19,9 +19,8 @@ import java.util.Optional;
  */
 
 @RestController
-@RequestMapping("/categories/{id}/products/{id}/pricings")
+@RequestMapping("/categories/{categoryId}/products/{productId}/pricings")
 public class PricingController {
-
 
     @Autowired
     public PricingService pricingService;
@@ -32,7 +31,6 @@ public class PricingController {
     public Iterable<Pricing> getAllPricing() {
         return pricingService.findAll();
     }
-
 
     @RequestMapping("/{id}")
     public Optional<Pricing> searchPricing(@PathVariable int id) {
@@ -45,18 +43,16 @@ public class PricingController {
         pricingLogService.insert(TheLogConverter.pricingLogLogConverter(pricing));
     }
 
-    @RequestMapping(method = RequestMethod.PUT,value ="/{id}")
+    @RequestMapping(method = RequestMethod.PUT, value = "/{id}")
     public void updateCategory(@RequestBody Pricing pricing) {
         pricingService.updatePricing(pricing);
         pricingLogService.insert(TheLogConverter.pricingLogLogConverter(pricing));
     }
 
-    @RequestMapping(method = RequestMethod.DELETE,value ="/{id}")
+    @RequestMapping(method = RequestMethod.DELETE, value = "/{id}")
     public void deletePricing(@RequestBody Pricing pricing) {
         pricingService.deletePricing(pricing);
         pricingLogService.insert(TheLogConverter.pricingLogLogConverter(pricing));
     }
 
-
 }
-
